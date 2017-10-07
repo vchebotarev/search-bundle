@@ -1,7 +1,7 @@
 {
     "name":        "chebur/search-bundle",
     "type":        "symfony-bundle",
-    "description": "Symfony 2 search bundle with pagination, limitation, sorting",
+    "description": "Symfony 2-3 search, pagination, limitation and sorting bundle",
     "keywords": [
         "symfony",
         "symfony2",
@@ -10,10 +10,14 @@
         "search",
         "pagination",
         "paginator",
+        "pager",
+        "offset",
         "limit",
         "limitation",
         "sort",
-        "sorting"
+        "sorting",
+        "order",
+        "filter"
     ],
     "homepage": "https://github.com/vchebotarev",
     "license":  "MIT",
@@ -24,6 +28,9 @@
             "email":    "v.yu.chebotarev@mail.ru"
         }
     ],
+    "require": {
+        "php": "^7.1"
+    },
     "autoload": {
         "psr-4": { "Chebur\\SearchBundle\\": "" }
     }

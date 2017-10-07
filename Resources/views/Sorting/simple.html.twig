@@ -1,0 +1,56 @@
+
+{#
+    @var page
+    @var limit
+    @var sort
+    @var order
+    @var limits
+    @var sorts
+    @var page_range_count
+    @var items_options
+    @var route
+    @var route_params
+    @var param_name_page
+    @var param_name_limit
+    @var param_name_sort
+    @var param_name_order
+    @var total_count
+#}
+
+{% if sorts|length > 1 %}
+    <ul>
+        {% for s, ss in sorts %}
+            {% if loop.index0 == 0 %}
+                {% set s_url = null %}
+            {% else %}
+                {% set s_url = s %}
+            {% endif %}
+            <li>
+                {% if ss is iterable %}
+                    <ul>
+                        {% for o, o_label in ss %}
+                            <li>
+                                {% if s == sort and o == order %}
+                                    {{ o_label }}
+                                {% else %}
+                                    {% if loop.index0 == 0 %}
+                                        {% set o_url = null %}
+                                    {% else %}
+                                        {% set o_url = o %}
+                                    {% endif %}
+                                    <a href="{{ path(route, route_params|merge({(param_name_sort): s_url, (param_name_order): o_url, (param_name_page): null })) }}">{{ o_label }}</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {% if s == sort %}
+                        {{ ss }}
+                    {% else %}
+                        <a href="{{ path(route, route_params|merge({(param_name_sort): s_url, (param_name_order): null, (param_name_page): null })) }}">{{ ss }}</a>
+                    {% endif %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

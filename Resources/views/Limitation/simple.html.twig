@@ -1,0 +1,47 @@
+
+{#
+    @var page
+    @var limit
+    @var sort
+    @var order
+    @var limits
+    @var sorts
+    @var page_range_count
+    @var items_options
+    @var route
+    @var route_params
+    @var param_name_page
+    @var param_name_limit
+    @var param_name_sort
+    @var param_name_order
+    @var total_count
+#}
+
+{% if limits|length > 1 %}
+    {% set min_limit = limits|keys[0] %}
+    {% for l,l_label in limits %}
+        {% if l > 0 and l < min_limit %}
+            {% set min_limit = l %}
+        {% endif %}
+    {% endfor %}
+
+    {# выводить только если total_count > наименьшего ненулевого лимита #}
+    {% if total_count > min_limit %}
+        <ul>
+            {% for l, l_label in limits %}
+                <li>
+                    {% if l == limit %}
+                        {{ l_label }}
+                    {% else %}
+                        {% if loop.index0 == 0 %}
+                            {% set l_url = null %}
+                        {% else %}
+                            {% set l_url = l %}
+                        {% endif %}
+                        <a href="{{ path(route, route_params|merge({(param_name_limit): l_url, (param_name_page): null })) }}">{{ l_label }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endif %}

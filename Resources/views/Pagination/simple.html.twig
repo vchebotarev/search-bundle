@@ -1,0 +1,130 @@
+
+{#
+    @var page
+    @var limit
+    @var sort
+    @var order
+    @var limits
+    @var sorts
+    @var page_range_count
+    @var items_options
+    @var route
+    @var route_params
+    @var param_name_page
+    @var param_name_limit
+    @var param_name_sort
+    @var param_name_order
+    @var total_count
+
+    @var page_count
+    @var page_range
+
+    Вид пагинатора из 11 страниц
+    [1]2345.1→
+    ←1[2]345.1→
+    ←12[3]45.1→
+    ←123[4]56.1→
+    ←1234[5]67.1→
+    ←1.45[6]78.1→
+    ←1.56[7]8901→
+    ←1.67[8]901→
+    ←1.78[9]01→
+    ←1.789[0]1→
+    ←1.7890[1]
+#}
+
+{% if page_count > 1 %}
+    {% set page_first = 1 %}
+    {% set page_last  = page_count %}
+    {% if page > 1 %}
+        {% set page_previous = page - 1 %}
+    {% endif %}
+    {% if page < page_count %}
+        {% set page_next  = page + 1 %}
+    {% endif %}
+
+    <ul>
+        {# Назад #}
+        {% if page_previous is defined %}
+            {% if page_previous == page_first %}
+                {% set p_url = null %}
+            {% else %}
+                {% set p_url = page_previous %}
+            {% endif %}
+            <li>
+                <a href="{{ path(route, route_params|merge({(param_name_page): p_url})) }}">←</a>
+            </li>
+        {% endif %}
+
+        {# Первая страница #}
+        {% if page_first not in page_range %}
+            <li>
+                {% if page == page_first %}
+                    {{ page_first }}
+                {% else %}
+                    <a href="{{ path(route, route_params|merge({(param_name_page): null})) }}">{{ page_first }}</a>
+                {% endif %}
+            </li>
+        {% endif %}
+
+        {# Разрыв #}
+        {% if page_range|first > 2 %}
+            {% if page_range|first == page_first + 2 %} {# Заменяем разрыв на единственную скрытую старницу #}
+                <li>
+                    <a href="{{ path(route, route_params|merge({(param_name_page): page_last - 1})) }}">{{ page_first + 1 }}</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path(route, route_params|merge({(param_name_page): page_range|first - 1})) }}">…</a>
+                </li>
+            {% endif %}
+        {% endif %}
+
+        {# Основной набор страниц #}
+        {% for p in page_range %}
+            <li>
+                {% if p == page %}
+                    {{ p }}
+                {% else %}
+                    {% if p == page_first %}
+                        {% set p_url = null %}
+                    {% else %}
+                        {% set p_url = p %}
+                    {% endif %}
+                    <a href="{{ path(route, route_params|merge({(param_name_page): p_url})) }}">{{ p }}</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+
+        {# Разрыв #}
+        {% if page_range|last < page_last - 1 %}
+            {% if page_range|last == page_last - 2 %} {# Заменяем разрыв на единственную скрытую старницу #}
+                <li>
+                    <a href="{{ path(route, route_params|merge({(param_name_page): page_last - 1})) }}">{{ page_last - 1 }}</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path(route, route_params|merge({(param_name_page): page_range|last + 1})) }}">…</a>
+                </li>
+            {% endif %}
+        {% endif %}
+
+        {# Последняя страница #}
+        {% if page_last not in page_range %}
+            <li>
+                {% if page == page_last %}
+                    {{ page_last }}
+                {% else %}
+                    <a href="{{ path(route, route_params|merge({(param_name_page): page_last})) }}">{{ page_last }}</a>
+                {% endif %}
+            </li>
+        {% endif %}
+
+        {# Вперед #}
+        {% if page_next is defined %}
+            <li>
+                <a href="{{ path(route, route_params|merge({(param_name_page): page_next})) }}">→</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}

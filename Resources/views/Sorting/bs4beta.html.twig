@@ -1,0 +1,57 @@
+
+{#
+    @var page
+    @var limit
+    @var sort
+    @var order
+    @var limits
+    @var sorts
+    @var page_range_count
+    @var items_options
+    @var route
+    @var route_params
+    @var param_name_page
+    @var param_name_limit
+    @var param_name_sort
+    @var param_name_order
+    @var total_count
+#}
+
+{% if sorts|length > 1 %}
+    <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% set orders = sorts[sort] %}
+            {% if orders is iterable %}
+                {% set result_label = orders[order] %}
+            {% else %}
+                {% set result_label = orders %}
+            {% endif %}
+            {{ result_label }}
+        </button>
+        <div class="dropdown-menu">
+            {% for s, ss in sorts %}
+                {% if loop.index0 == 0 %}
+                    {% set s_url = null %}
+                {% else %}
+                    {% set s_url = s %}
+                {% endif %}
+                {% if ss is iterable %}
+                    {% for o, o_label in ss %}
+                        {% if s != sort or o != order %}
+                            {% if loop.index0 == 0 %}
+                                {% set o_url = null %}
+                            {% else %}
+                                {% set o_url = o %}
+                            {% endif %}
+                            <a class="dropdown-item" href="{{ path(route, route_params|merge({(param_name_sort): s_url, (param_name_order): o_url, (param_name_page): null })) }}">{{ o_label }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% if s != sort %}
+                        <a class="dropdown-item" href="{{ path(route, route_params|merge({(param_name_sort): s_url, (param_name_page): null })) }}">{{ ss }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

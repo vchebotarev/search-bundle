@@ -1,0 +1,33 @@
+
+services:
+
+# Default services
+    chebur.search.manager.default:
+        class: Chebur\SearchBundle\Search\Manager
+        arguments:
+            - '@event_dispatcher'
+            - '@chebur.search.request_handler'
+            - '@chebur.search.options'
+
+    chebur.search.request_handler.default:
+        class: Chebur\SearchBundle\Search\RequestHandler
+
+    chebur.search.options.default:
+        class: Chebur\SearchBundle\Search\Options
+
+# Twig
+    chebur.search.twig.extension:
+        class: Chebur\SearchBundle\Twig\Extension\SearchExtension
+        tags:
+            - { name: twig.extension }
+
+# Subscribers
+    chebur.search.subscriber.items:
+        class: Chebur\SearchBundle\Event\Subscriber\ItemsSubscriber
+        tags:
+            - { name: kernel.event_subscriber }
+
+    chebur.search.subscriber.items.array:
+        class: Chebur\SearchBundle\Event\Subscriber\ItemsSubscriberArray
+        tags:
+            - { name: kernel.event_subscriber }
