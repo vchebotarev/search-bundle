@@ -53,10 +53,10 @@ class Pagination implements \Countable
         $this->totalCount = $totalCount;
         $this->perPage    = $perPage;
 
-        $this->calculateAdditionals();
+        $this->calculateAdditions();
     }
 
-    protected function calculateAdditionals()
+    protected function calculateAdditions()
     {
         $this->pagesCount = intval(ceil($this->getTotalCount() / $this->getPerPage()));
 

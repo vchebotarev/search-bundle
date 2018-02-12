@@ -43,17 +43,17 @@ class CheburSearchExtension extends Extension
      */
     protected function processDefaultOptions(array $config, ContainerBuilder $containerBuilder)
     {
-        $optionsDefenition = $containerBuilder->getDefinition($containerBuilder->getAlias('chebur.search.options'));
-        $optionsDefenition->addMethodCall('setPageRange', [$config['range']]);
+        $optionsDefinition = $containerBuilder->getDefinition($containerBuilder->getAlias('chebur.search.options'));
+        $optionsDefinition->addMethodCall('setPageRange', [$config['range']]);
         //templates
-        $optionsDefenition->addMethodCall('setTemplateLimitation', [$config['templates']['limitation']]);
-        $optionsDefenition->addMethodCall('setTemplatePagination', [$config['templates']['pagination']]);
-        $optionsDefenition->addMethodCall('setTemplateSorting', [$config['templates']['sorting']]);
+        $optionsDefinition->addMethodCall('setTemplateLimitation', [$config['templates']['limitation']]);
+        $optionsDefinition->addMethodCall('setTemplatePagination', [$config['templates']['pagination']]);
+        $optionsDefinition->addMethodCall('setTemplateSorting', [$config['templates']['sorting']]);
         //param names
-        $optionsDefenition->addMethodCall('setParamNamePage', [$config['param_names']['page']]);
-        $optionsDefenition->addMethodCall('setParamNameLimit', [$config['param_names']['limit']]);
-        $optionsDefenition->addMethodCall('setParamNameSort', [$config['param_names']['sort']]);
-        $optionsDefenition->addMethodCall('setParamNameOrder', [$config['param_names']['order']]);
+        $optionsDefinition->addMethodCall('setParamNamePage', [$config['param_names']['page']]);
+        $optionsDefinition->addMethodCall('setParamNameLimit', [$config['param_names']['limit']]);
+        $optionsDefinition->addMethodCall('setParamNameSort', [$config['param_names']['sort']]);
+        $optionsDefinition->addMethodCall('setParamNameOrder', [$config['param_names']['order']]);
     }
 
 }
