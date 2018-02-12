@@ -7,12 +7,12 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 interface ManagerInterface
 {
     /**
-     * @param iterable         $items
+     * @param iterable|array   $items
      * @param int|int[]        $totalCount
      * @param OptionsInterface $options
      * @return ContainerInterface
      */
-    public function createContainer(iterable $items, $totalCount, OptionsInterface $options) : ContainerInterface;
+    public function createContainer($items, $totalCount, OptionsInterface $options) : ContainerInterface;
 
     /**
      * @return BuilderInterface

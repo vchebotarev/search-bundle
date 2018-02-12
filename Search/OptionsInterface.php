@@ -93,12 +93,12 @@ interface OptionsInterface extends \ArrayAccess
     public function setItemsSource($source);
 
     /**
-     * @return array|object
+     * @return mixed
      */
     public function getItemsOptions();
 
     /**
-     * @param array|object $options
+     * @param mixed $options
      * @return $this
      */
     public function setItemsOptions($options);

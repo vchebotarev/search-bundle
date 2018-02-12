@@ -50,11 +50,11 @@ interface BuilderInterface
     public function setSorts(array $sorts);
 
     /**
-     * @param array|object      $source
-     * @param array|object|null $options
+     * @param array|object $source
+     * @param mixed        $options
      * @return $this
      */
-    public function setItemsSource($source, $options = []);
+    public function setItemsSource($source, $options = null);
 
     /**
      * @param string     $route

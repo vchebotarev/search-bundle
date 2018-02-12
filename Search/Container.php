@@ -5,7 +5,7 @@ namespace Chebur\SearchBundle\Search;
 class Container implements ContainerInterface
 {
     /**
-     * @var iterable
+     * @var iterable|array
      */
     protected $items;
 
@@ -20,11 +20,11 @@ class Container implements ContainerInterface
     protected $options;
 
     /**
-     * @param iterable         $items
+     * @param iterable|array   $items
      * @param int|int[]        $totalCount
      * @param OptionsInterface $options
      */
-    public function __construct(iterable $items, $totalCount, OptionsInterface $options)
+    public function __construct($items, $totalCount, OptionsInterface $options)
     {
         $this->items      = $items;
         $this->totalCount = $totalCount;
@@ -34,7 +34,7 @@ class Container implements ContainerInterface
     /**
      * @inheritdoc
      */
-    public function getItems() : iterable
+    public function getItems()
     {
         return $this->items;
     }

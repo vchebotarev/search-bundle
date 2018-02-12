@@ -44,7 +44,7 @@ class Manager implements ManagerInterface
     /**
      * @inheritdoc
      */
-    public function createContainer(iterable $items, $totalCount, OptionsInterface $options) : ContainerInterface
+    public function createContainer($items, $totalCount, OptionsInterface $options) : ContainerInterface
     {
         return new Container($items, $totalCount, $options);
     }

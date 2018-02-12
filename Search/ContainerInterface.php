@@ -5,9 +5,9 @@ namespace Chebur\SearchBundle\Search;
 interface ContainerInterface extends \Iterator, \Countable
 {
     /**
-     * @return iterable
+     * @return iterable|array
      */
-    public function getItems() : iterable;
+    public function getItems();
 
     /**
      * @return int|int[]

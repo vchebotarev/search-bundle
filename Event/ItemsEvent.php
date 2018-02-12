@@ -12,7 +12,7 @@ class ItemsEvent extends Event
     protected $source;
 
     /**
-     * @var array|object
+     * @var mixed
      */
     protected $options;
 
@@ -42,19 +42,19 @@ class ItemsEvent extends Event
     protected $totalCount;
 
     /**
-     * @var iterable
+     * @var iterable|array
      */
     protected $items;
 
     /**
      * @param array|object $source
-     * @param array|object $options
+     * @param mixed        $options
      * @param string       $sort
      * @param string       $sortOrder
      * @param int          $limit
      * @param int          $offset
      */
-    public function __construct($source, $options = [], $sort = '', $sortOrder = '', $limit = 0, $offset = 0)
+    public function __construct($source, $options, $sort = '', $sortOrder = '', $limit = 0, $offset = 0)
     {
         $this->source    = $source;
         $this->options   = $options;
@@ -73,7 +73,7 @@ class ItemsEvent extends Event
     }
 
     /**
-     * @return array|object
+     * @return mixed
      */
     public function getOptions()
     {
@@ -113,7 +113,7 @@ class ItemsEvent extends Event
     }
 
     /**
-     * @return iterable
+     * @return iterable|array
      */
     public function getItems()
     {
@@ -121,7 +121,7 @@ class ItemsEvent extends Event
     }
 
     /**
-     * @param iterable $items
+     * @param iterable|array $items
      * @return $this
      */
     public function setItems($items)
