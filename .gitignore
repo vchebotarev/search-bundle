@@ -3,3 +3,8 @@
 
 # NetBeans
 nbproject/
+
+# Composer
+vendor/
+composer.phar
+composer.lock
