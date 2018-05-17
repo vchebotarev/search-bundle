@@ -1,10 +1,9 @@
 {
     "name":        "chebur/search-bundle",
     "type":        "symfony-bundle",
-    "description": "Symfony 2-3-4 search, pagination, limitation and sorting bundle",
+    "description": "Symfony search, pagination, limitation and sorting bundle",
     "keywords": [
         "symfony",
-        "symfony2",
         "symfony3",
         "symfony4",
         "bundle",
@@ -32,13 +31,13 @@
     "require": {
         "php": "^7.1",
 
-        "symfony/config":               "^3.4|^4.0",
-        "symfony/dependency-injection": "^3.4|^4.0",
-        "symfony/event-dispatcher":     "^3.4|^4.0",
-        "symfony/http-foundation":      "^3.4|^4.0",
-        "symfony/http-kernel":          "^3.4|^4.0",
-        "symfony/options-resolver":     "^3.4|^4.0",
-        "twig/twig":                    "^1.0|^2.0"
+        "symfony/config":               "^3.4 || ^4.0",
+        "symfony/dependency-injection": "^3.4 || ^4.0",
+        "symfony/event-dispatcher":     "^3.4 || ^4.0",
+        "symfony/http-foundation":      "^3.4 || ^4.0",
+        "symfony/http-kernel":          "^3.4 || ^4.0",
+        "symfony/options-resolver":     "^3.4 || ^4.0",
+        "twig/twig":                    "^1.35 || ^2.4.4"
     },
     "autoload": {
         "psr-4": { "Chebur\\SearchBundle\\": "" }
