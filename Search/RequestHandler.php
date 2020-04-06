@@ -6,9 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RequestHandler implements RequestHandlerInterface
 {
-    /**
-     * @inheritdoc
-     */
     public function handleRequest(OptionsInterface $options, Request $request = null)
     {
         if (!$request) {
@@ -23,10 +20,6 @@ class RequestHandler implements RequestHandlerInterface
         $this->processRouteParams($options, $request);
     }
 
-    /**
-     * @param OptionsInterface $options
-     * @param Request          $request
-     */
     protected function processPage(OptionsInterface $options, Request $request)
     {
         $value = $this->processParam($options->getParamNamePage(), $request);
@@ -39,10 +32,6 @@ class RequestHandler implements RequestHandlerInterface
         $options->setPage($value);
     }
 
-    /**
-     * @param OptionsInterface $options
-     * @param Request          $request
-     */
     protected function processLimit(OptionsInterface $options, Request $request)
     {
         $value = $this->processParam($options->getParamNameLimit(), $request);
@@ -55,10 +44,6 @@ class RequestHandler implements RequestHandlerInterface
         $options->setLimit($value);
     }
 
-    /**
-     * @param OptionsInterface $options
-     * @param Request          $request
-     */
     protected function processSort(OptionsInterface $options, Request $request)
     {
         $value = $this->processParam($options->getParamNameSort(), $request);
@@ -71,10 +56,6 @@ class RequestHandler implements RequestHandlerInterface
         $options->setSort($value);
     }
 
-    /**
-     * @param OptionsInterface $options
-     * @param Request          $request
-     */
     protected function processOrder(OptionsInterface $options, Request $request)
     {
         $value = $this->processParam($options->getParamNameOrder(), $request);
@@ -87,10 +68,6 @@ class RequestHandler implements RequestHandlerInterface
         $options->setOrder($value);
     }
 
-    /**
-     * @param OptionsInterface $options
-     * @param Request          $request
-     */
     protected function processRoute(OptionsInterface $options, Request $request)
     {
         if (!$options->getRoute()) {
@@ -98,10 +75,6 @@ class RequestHandler implements RequestHandlerInterface
         }
     }
 
-    /**
-     * @param OptionsInterface $options
-     * @param Request          $request
-     */
     protected function processRouteParams(OptionsInterface $options, Request $request)
     {
         if (empty($options->getRouteParams())) {
@@ -110,8 +83,6 @@ class RequestHandler implements RequestHandlerInterface
     }
 
     /**
-     * @param string  $paramName
-     * @param Request $request
      * @return mixed|null
      */
     protected function processParam(string $paramName, Request $request)
@@ -128,5 +99,4 @@ class RequestHandler implements RequestHandlerInterface
         }
         return null;
     }
-
 }

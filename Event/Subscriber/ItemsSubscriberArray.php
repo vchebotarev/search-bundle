@@ -8,9 +8,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ItemsSubscriberArray implements EventSubscriberInterface
 {
-    /**
-     * @inheritDoc
-     */
     public static function getSubscribedEvents()
     {
         return [
@@ -18,10 +15,7 @@ class ItemsSubscriberArray implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param ItemsEvent $event
-     */
-    public function items(ItemsEvent $event)
+    public function items(ItemsEvent $event): void
     {
         $itemsSource = $event->getSource();
         if (!is_array($itemsSource)) {
@@ -40,5 +34,4 @@ class ItemsSubscriberArray implements EventSubscriberInterface
 
         $event->stopPropagation();
     }
-
 }

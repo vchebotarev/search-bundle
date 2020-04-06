@@ -7,22 +7,21 @@ class Container implements ContainerInterface
     /**
      * @var iterable|array
      */
-    protected $items;
+    private $items;
 
     /**
      * @var int|int[]
      */
-    protected $totalCount;
+    private $totalCount;
 
     /**
      * @var array
      */
-    protected $options;
+    private $options;
 
     /**
      * @param iterable|array   $items
      * @param int|int[]        $totalCount
-     * @param OptionsInterface $options
      */
     public function __construct($items, $totalCount, OptionsInterface $options)
     {
@@ -31,76 +30,48 @@ class Container implements ContainerInterface
         $this->options    = $options;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getItems()
     {
         return $this->items;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getTotalCount()
     {
         return $this->totalCount;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getOptions() : OptionsInterface
+    public function getOptions(): OptionsInterface
     {
         return $this->options;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function rewind()
     {
         reset($this->items);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function current()
     {
         return current($this->items);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function key()
     {
         return key($this->items);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function next()
     {
         next($this->items);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function valid()
     {
         return key($this->items) !== null;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function count()
     {
         return count($this->items);
     }
-
 }

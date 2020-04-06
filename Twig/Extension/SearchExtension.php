@@ -4,12 +4,11 @@ namespace Chebur\SearchBundle\Twig\Extension;
 
 use Chebur\SearchBundle\Search\Pagination;
 use Chebur\SearchBundle\Search\ContainerInterface;
+use Twig_Environment;
+use Twig_Extension;
 
-class SearchExtension extends \Twig_Extension
+class SearchExtension extends Twig_Extension
 {
-    /**
-     * @inheritdoc
-     */
     public function getFunctions()
     {
         return [
@@ -19,13 +18,7 @@ class SearchExtension extends \Twig_Extension
         ];
     }
 
-    /**
-     * @param \Twig_Environment  $env
-     * @param ContainerInterface $searchContainer
-     * @param array              $options
-     * @return string
-     */
-    public function pagination(\Twig_Environment $env, ContainerInterface $searchContainer, array $options = [])
+    public function pagination(Twig_Environment $env, ContainerInterface $searchContainer, array $options = []): string
     {
         $searchOptions = $searchContainer->getOptions();
         $template      = isset($options['template']) ? $options['template'] : $searchOptions->getTemplatePagination();
@@ -67,13 +60,7 @@ class SearchExtension extends \Twig_Extension
         return $env->render($template, $renderParameters);
     }
 
-    /**
-     * @param \Twig_Environment  $env
-     * @param ContainerInterface $searchContainer
-     * @param array              $options
-     * @return string
-     */
-    public function limitation(\Twig_Environment $env, ContainerInterface $searchContainer, array $options = [])
+    public function limitation(Twig_Environment $env, ContainerInterface $searchContainer, array $options = []): string
     {
         $searchOptions = $searchContainer->getOptions();
         $template      = isset($options['template']) ? $options['template'] : $searchOptions->getTemplateLimitation();
@@ -103,13 +90,7 @@ class SearchExtension extends \Twig_Extension
         return $env->render($template, $renderParameters);
     }
 
-    /**
-     * @param \Twig_Environment  $env
-     * @param ContainerInterface $searchContainer
-     * @param array              $options
-     * @return string
-     */
-    public function sorting(\Twig_Environment $env, ContainerInterface $searchContainer, array $options = [])
+    public function sorting(Twig_Environment $env, ContainerInterface $searchContainer, array $options = []): string
     {
         $searchOptions = $searchContainer->getOptions();
         $template      = isset($options['template']) ? $options['template'] : $searchOptions->getTemplateSorting();
@@ -138,5 +119,4 @@ class SearchExtension extends \Twig_Extension
 
         return $env->render($template, $renderParameters);
     }
-
 }

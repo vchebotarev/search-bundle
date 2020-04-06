@@ -29,10 +29,7 @@ class Builder implements BuilderInterface
         //возможно стоит добавить установку хендлера, диспатчера и опций извне?
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function build(Request $request = null) : ContainerInterface
+    public function build(Request $request = null): ContainerInterface
     {
         if ($this->options->getItemsSource() === null) {
             throw new \InvalidArgumentException('Items source must be configured');
@@ -63,27 +60,18 @@ class Builder implements BuilderInterface
         return $searchContainer;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setPage(int $page = 1)
     {
         $this->options->setPage($page);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setLimit(int $limit = 0)
     {
         $this->options->setLimit($limit);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setSort(string $sort, string $order = null)
     {
         $this->options->setSort($sort);
@@ -93,36 +81,24 @@ class Builder implements BuilderInterface
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setPageRange(int $pageRange)
     {
         $this->options->setPageRange($pageRange);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setLimits(array $limits)
     {
         $this->options->setLimits($limits);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setSorts(array $sorts)
     {
         $this->options->setSorts($sorts);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setItemsSource($source, $options = null)
     {
         $this->options->setItemsSource($source);
@@ -132,9 +108,6 @@ class Builder implements BuilderInterface
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setRoute(string $route, array $routeParams = null)
     {
         $this->options->setRoute($route);
@@ -144,67 +117,45 @@ class Builder implements BuilderInterface
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setTemplatePagination(string $template)
     {
         $this->options->setTemplatePagination($template);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setTemplateLimitation(string $template)
     {
         $this->options->setTemplateLimitation($template);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setTemplateSorting(string $template)
     {
         $this->options->setTemplateSorting($template);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setParamNamePage(string $paramName)
     {
         $this->options->setParamNamePage($paramName);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setParamNameLimit(string $paramName)
     {
         $this->options->setParamNameLimit($paramName);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setParamNameSort(string $paramName)
     {
         $this->options->setParamNameSort($paramName);
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setParamNameOrder(string $paramName)
     {
         $this->options->setParamNameOrder($paramName);
         return $this;
     }
-
 }

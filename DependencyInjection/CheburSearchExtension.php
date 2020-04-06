@@ -9,9 +9,6 @@ use Symfony\Component\DependencyInjection\Loader;
 
 class CheburSearchExtension extends Extension
 {
-    /**
-     * @inheritDoc
-     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -24,11 +21,7 @@ class CheburSearchExtension extends Extension
         $this->processDefaultOptions($config, $container);
     }
 
-    /**
-     * @param array            $configServices
-     * @param ContainerBuilder $containerBuilder
-     */
-    protected function processServices(array $configServices, ContainerBuilder $containerBuilder)
+    protected function processServices(array $configServices, ContainerBuilder $containerBuilder): void
     {
         $containerBuilder->setAlias('chebur.search.request_handler', $configServices['handler']);
 
@@ -37,11 +30,7 @@ class CheburSearchExtension extends Extension
         $containerBuilder->setAlias('chebur.search.manager', $configServices['manager']);
     }
 
-    /**
-     * @param array            $config
-     * @param ContainerBuilder $containerBuilder
-     */
-    protected function processDefaultOptions(array $config, ContainerBuilder $containerBuilder)
+    protected function processDefaultOptions(array $config, ContainerBuilder $containerBuilder): void
     {
         $optionsDefinition = $containerBuilder->getDefinition($containerBuilder->getAlias('chebur.search.options'));
         $optionsDefinition->addMethodCall('setPageRange', [$config['range']]);
@@ -55,5 +44,4 @@ class CheburSearchExtension extends Extension
         $optionsDefinition->addMethodCall('setParamNameSort', [$config['param_names']['sort']]);
         $optionsDefinition->addMethodCall('setParamNameOrder', [$config['param_names']['order']]);
     }
-
 }

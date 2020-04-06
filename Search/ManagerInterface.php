@@ -12,21 +12,20 @@ interface ManagerInterface
      * @param OptionsInterface $options
      * @return ContainerInterface
      */
-    public function createContainer($items, $totalCount, OptionsInterface $options) : ContainerInterface;
+    public function createContainer($items, $totalCount, OptionsInterface $options): ContainerInterface;
 
     /**
      * @return BuilderInterface
      */
-    public function createBuilder() : BuilderInterface;
+    public function createBuilder(): BuilderInterface;
 
     /**
      * @return RequestHandlerInterface
      */
-    public function getRequestHandler() : RequestHandlerInterface;
+    public function getRequestHandler(): RequestHandlerInterface;
 
     /**
      * @return EventDispatcherInterface
      */
-    public function getEventDispatcher() : EventDispatcherInterface;
-
+    public function getEventDispatcher(): EventDispatcherInterface;
 }

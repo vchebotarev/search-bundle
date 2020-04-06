@@ -9,9 +9,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ItemsSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @inheritDoc
-     */
     public static function getSubscribedEvents()
     {
         return [
@@ -19,10 +16,7 @@ class ItemsSubscriber implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param ItemsEvent $event
-     */
-    public function items(ItemsEvent $event)
+    public function items(ItemsEvent $event): void
     {
         $itemsSource = $event->getSource();
         if (!$itemsSource instanceof AbstractItemsSource) {
@@ -44,5 +38,4 @@ class ItemsSubscriber implements EventSubscriberInterface
 
         $event->stopPropagation();
     }
-
 }

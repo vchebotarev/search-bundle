@@ -17,6 +17,5 @@ interface ContainerInterface extends \Iterator, \Countable
     /**
      * @return OptionsInterface
      */
-    public function getOptions() : OptionsInterface;
-
+    public function getOptions(): OptionsInterface;
 }

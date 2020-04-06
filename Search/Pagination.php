@@ -2,83 +2,77 @@
 
 namespace Chebur\SearchBundle\Search;
 
-class Pagination implements \Countable
+use Countable;
+use InvalidArgumentException;
+
+class Pagination implements Countable
 {
     /**
      * @var int
      */
-    protected $page;
+    private $page;
 
     /**
      * @var int
      */
-    protected $perPage;
+    private $perPage;
 
     /**
      * @var int
      */
-    protected $totalCount;
+    private $totalCount;
 
     /**
      * @var int
      */
-    protected $pagesCount;
+    private $pagesCount;
 
     /**
      * @var int
      */
-    protected $currentPageItemsCount;
+    private $currentPageItemsCount;
 
     /**
      * @var int
      */
-    protected $currentPageItemFirstIndex;
+    private $currentPageItemFirstIndex;
 
     /**
      * @var int
      */
-    protected $currentPageItemLastIndex;
+    private $currentPageItemLastIndex;
 
-    /**
-     * @param int $totalCount
-     * @param int $perPage
-     * @param int $page
-     */
     public function __construct(int $totalCount, int $perPage, int $page = 1)
     {
         if ($totalCount < 0 || $perPage <= 0 || $page <= 0) {
-            throw new \InvalidArgumentException('Wrong arguments passed');
+            throw new InvalidArgumentException('Wrong arguments passed');
         }
-        $this->page       = $page;
+        $this->page = $page;
         $this->totalCount = $totalCount;
-        $this->perPage    = $perPage;
+        $this->perPage = $perPage;
 
         $this->calculateAdditions();
     }
 
-    protected function calculateAdditions()
+    private function calculateAdditions()
     {
         $this->pagesCount = intval(ceil($this->getTotalCount() / $this->getPerPage()));
 
-        $currentPageItemsCount       = $this->getTotalCount() - $this->getPerPage() * ($this->getPage() - 1);
+        $currentPageItemsCount = $this->getTotalCount() - $this->getPerPage() * ($this->getPage() - 1);
         $this->currentPageItemsCount = $currentPageItemsCount >= 0 ? $currentPageItemsCount : 0;
 
         if ($this->currentPageItemsCount > 0) {
             $this->currentPageItemFirstIndex = $this->getPerPage() * ($this->getPage() - 1) + 1;
             $this->currentPageItemLastIndex  = $this->getPerPage() * ($this->getPage() - 1) + $this->currentPageItemsCount;
         } else {
-            $this->currentPageItemFirstIndex = 0;
-            $this->currentPageItemLastIndex  = 0;
+            $this->currentPageItemFirstIndex = 0; //todo null
+            $this->currentPageItemLastIndex = 0; //todo null
         }
     }
 
-    /**
-     * @param int $rangeCount
-     * @return array
-     */
-    public function getPageRange(int $rangeCount = 5)
+    public function getPageRange(?int $rangeCount = 5): array
     {
-        if ($this->totalCount == 0) {
+        if ($this->totalCount === 0) {
             return [];
         }
 
@@ -86,91 +80,61 @@ class Pagination implements \Countable
             return [1];
         }
 
-        $current   = $this->page;
-        $pageCount = $this->count();
-
-        if ($rangeCount === null || $rangeCount >= $pageCount) {
-            return range(1, $pageCount, 1);
+        if ($rangeCount === null || $rangeCount >= $this->pagesCount) {
+            return range(1, $this->pagesCount);
         }
 
-        $delta = ceil($rangeCount / 2);
+        $delta = (int)ceil($rangeCount / 2); //4.3 -> 5
 
-        if ($current - $delta > $pageCount - $rangeCount) {
-            $pageRange = range($pageCount - $rangeCount + 1, $pageCount);
-        } else {
-            if ($current - $delta < 0) {
-                $delta = $current;
-            }
-
-            $offset = $current - $delta;
-            $pageRange = range($offset + 1, $offset + $rangeCount);
+        if ($this->page - $delta > $this->pagesCount - $rangeCount) {
+            return range($this->pagesCount - $rangeCount + 1, $this->pagesCount);
         }
 
-        return $pageRange;
+        if ($this->page - $delta < 0) {
+            $delta = $this->page;
+        }
+        $offset = $this->page - $delta;
+
+        return range($offset + 1, $offset + $rangeCount);
     }
 
-    /**
-     * @return int
-     */
-    public function getPage() : int
+    public function getPage(): int
     {
         return $this->page;
     }
 
-    /**
-     * @return int
-     */
-    public function getPerPage() : int
+    public function getPerPage(): int
     {
         return $this->perPage;
     }
 
-    /**
-     * @return int
-     */
-    public function getTotalCount() : int
+    public function getTotalCount(): int
     {
         return $this->totalCount;
     }
 
-    /**
-     * @return int
-     */
-    public function getPageCount() : int
+    public function getPageCount(): int
     {
         return $this->pagesCount;
     }
 
-    /**
-     * @return int
-     */
-    public function getCurrentPageItemsCount() : int
+    public function getCurrentPageItemsCount(): int
     {
         return $this->currentPageItemsCount;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getCurrentPageItemFirstIndex() : int
+    public function getCurrentPageItemFirstIndex(): int
     {
         return $this->currentPageItemFirstIndex;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getCurrentPageItemLastIndex() : int
+    public function getCurrentPageItemLastIndex(): int
     {
         return $this->currentPageItemLastIndex;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function count()
     {
         return $this->getPageCount();
     }
-
 }

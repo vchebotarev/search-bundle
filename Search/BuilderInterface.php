@@ -10,7 +10,7 @@ interface BuilderInterface
      * @param Request|null $request
      * @return ContainerInterface
      */
-    public function build(Request $request = null) : ContainerInterface;
+    public function build(Request $request = null): ContainerInterface;
 
     /**
      * @param int $page
@@ -104,5 +104,4 @@ interface BuilderInterface
      * @return $this
      */
     public function setParamNameOrder(string $paramName);
-
 }

@@ -32,5 +32,4 @@ abstract class AbstractItemsSource
      * @return int|int[]
      */
     abstract protected function getTotalCount($options);
-
 }

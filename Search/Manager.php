@@ -9,60 +9,45 @@ class Manager implements ManagerInterface
     /**
      * @var OptionsInterface
      */
-    protected $defaultOptions;
+    private $defaultOptions;
 
     /**
      * @var EventDispatcherInterface
      */
-    protected $eventDispatcher;
+    private $eventDispatcher;
 
     /**
      * @var RequestHandlerInterface
      */
-    protected $requestHandler;
+    private $requestHandler;
 
-    /**
-     * @param EventDispatcherInterface $eventDispatcher
-     * @param RequestHandlerInterface  $requestHandler
-     * @param OptionsInterface         $defaultOptions
-     */
-    public function __construct(EventDispatcherInterface $eventDispatcher, RequestHandlerInterface $requestHandler, OptionsInterface $defaultOptions)
-    {
+    public function __construct(
+        EventDispatcherInterface $eventDispatcher,
+        RequestHandlerInterface $requestHandler,
+        OptionsInterface $defaultOptions
+    ) {
         $this->eventDispatcher = $eventDispatcher;
-        $this->requestHandler  = $requestHandler;
-        $this->defaultOptions  = $defaultOptions;
+        $this->requestHandler = $requestHandler;
+        $this->defaultOptions = $defaultOptions;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function createBuilder() : BuilderInterface
+    public function createBuilder(): BuilderInterface
     {
         return new Builder($this, clone $this->defaultOptions);
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function createContainer($items, $totalCount, OptionsInterface $options) : ContainerInterface
+    public function createContainer($items, $totalCount, OptionsInterface $options): ContainerInterface
     {
         return new Container($items, $totalCount, $options);
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getRequestHandler() : RequestHandlerInterface
+    public function getRequestHandler(): RequestHandlerInterface
     {
         return $this->requestHandler;
     }
 
-    /**
-     * @return EventDispatcherInterface
-     */
-    public function getEventDispatcher() : EventDispatcherInterface
+    public function getEventDispatcher(): EventDispatcherInterface
     {
         return $this->eventDispatcher;
     }
-
 }

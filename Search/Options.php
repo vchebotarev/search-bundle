@@ -105,315 +105,204 @@ class Options implements OptionsInterface
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getPage(): int
     {
         return $this->options['page'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setPage(int $page = 1)
     {
         $this->options['page'] = $page;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getLimit() : int
+    public function getLimit(): int
     {
         return $this->options['limit'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setLimit(int $limit = 0)
     {
         $this->options['limit'] = $limit;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getSort() : string
+    public function getSort(): string
     {
         return $this->options['sort'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setSort(string $sort)
     {
         $this->options['sort'] = $sort;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getOrder() : string
+    public function getOrder(): string
     {
         return $this->options['order'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setOrder(string $order)
     {
         $this->options['order'] = $order;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getPageRange() : int
+    public function getPageRange(): int
     {
         return $this->options['page_range_count'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setPageRange(int $range)
     {
         $this->options['page_range_count'] = $range;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getLimits() : array
+    public function getLimits(): array
     {
         return $this->options['limits'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setLimits(array $limits)
     {
         $this->options['limits'] = $limits;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getSorts() : array
+    public function getSorts(): array
     {
         return $this->options['sorts'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setSorts(array $sorts)
     {
         $this->options['sorts'] = $sorts;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getItemsSource()
     {
         return $this->options['items_source'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setItemsSource($source)
     {
         $this->options['items_source'] = $source;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getItemsOptions()
     {
         return $this->options['items_options'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setItemsOptions($options)
     {
         $this->options['items_options'] = $options;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getParamNamePage() : string
+    public function getParamNamePage(): string
     {
         return $this->options['param_name_page'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setParamNamePage(string $paramName)
     {
         $this->options['param_name_page'] = $paramName;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getParamNameLimit() : string
+    public function getParamNameLimit(): string
     {
         return $this->options['param_name_limit'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setParamNameLimit(string $paramName)
     {
         $this->options['param_name_limit'] = $paramName;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getParamNameSort() : string
+    public function getParamNameSort(): string
     {
         return $this->options['param_name_sort'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setParamNameSort(string $paramName)
     {
         $this->options['param_name_sort'] = $paramName;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getParamNameOrder() : string
+    public function getParamNameOrder(): string
     {
         return $this->options['param_name_order'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setParamNameOrder(string $paramName)
     {
         $this->options['param_name_order'] = $paramName;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getRoute()
     {
         return $this->options['route'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setRoute(string $route)
     {
         $this->options['route'] = $route;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getRouteParams() : array
+    public function getRouteParams(): array
     {
         return $this->options['route_params'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setRouteParams(array $params)
     {
         $this->options['route_params'] = $params;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getTemplatePagination() : string
+    public function getTemplatePagination(): string
     {
         return $this->options['template_pagination'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setTemplatePagination(string $template)
     {
         $this->options['template_pagination'] = $template;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getTemplateLimitation() : string
+    public function getTemplateLimitation(): string
     {
         return $this->options['template_limitation'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setTemplateLimitation(string $template)
     {
         $this->options['template_limitation'] = $template;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getTemplateSorting() : string
+    public function getTemplateSorting(): string
     {
         return $this->options['template_sorting'];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function setTemplateSorting(string $template)
     {
         $this->options['template_sorting'] = $template;
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getOffset()
     {
         $offset = ($this->getPage() - 1) * $this->getLimit();
@@ -423,44 +312,28 @@ class Options implements OptionsInterface
         return $offset;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function toArray() : array
+    public function toArray(): array
     {
         return $this->options;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function offsetExists($offset)
     {
         return isset($this->options[$offset]);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function offsetGet($offset)
     {
         return $this->options[$offset];
     }
 
-    /**
-     * @inheritDoc
-     */
     public function offsetSet($offset, $value)
     {
         $this->options[$offset] = $value;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function offsetUnset($offset)
     {
         unset($this->options[$offset]);
     }
-
 }

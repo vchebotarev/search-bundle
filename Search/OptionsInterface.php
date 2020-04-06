@@ -7,7 +7,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return int
      */
-    public function getPage() : int;
+    public function getPage(): int;
 
     /**
      * @param int $page
@@ -18,7 +18,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return int
      */
-    public function getLimit() : int;
+    public function getLimit(): int;
 
     /**
      * @param int $limit
@@ -29,7 +29,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return string
      */
-    public function getSort() : string;
+    public function getSort(): string;
 
     /**
      * @param string $sort
@@ -40,7 +40,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return string
      */
-    public function getOrder() : string;
+    public function getOrder(): string;
 
     /**
      * @param string $order
@@ -51,7 +51,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return int
      */
-    public function getPageRange() : int;
+    public function getPageRange(): int;
 
     /**
      * @param int $range
@@ -62,7 +62,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return array
      */
-    public function getLimits() : array;
+    public function getLimits(): array;
 
     /**
      * @param array $limits
@@ -73,7 +73,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return array
      */
-    public function getSorts() : array;
+    public function getSorts(): array;
 
     /**
      * @param array $sorts
@@ -106,7 +106,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return string
      */
-    public function getParamNamePage() : string;
+    public function getParamNamePage(): string;
 
     /**
      * @param string $paramName
@@ -117,7 +117,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return string
      */
-    public function getParamNameLimit() : string;
+    public function getParamNameLimit(): string;
 
     /**
      * @param string $paramName
@@ -128,7 +128,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return string
      */
-    public function getParamNameSort() : string;
+    public function getParamNameSort(): string;
 
     /**
      * @param string $paramName
@@ -139,7 +139,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return string
      */
-    public function getParamNameOrder() : string;
+    public function getParamNameOrder(): string;
 
     /**
      * @param string $paramName
@@ -161,7 +161,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return array
      */
-    public function getRouteParams() : array;
+    public function getRouteParams(): array;
 
     /**
      * @param array $params
@@ -172,7 +172,7 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return string
      */
-    public function getTemplatePagination() : string;
+    public function getTemplatePagination(): string;
 
     /**
      * @param string $template
@@ -180,10 +180,7 @@ interface OptionsInterface extends \ArrayAccess
      */
     public function setTemplatePagination(string $template);
 
-    /**
-     * @return string
-     */
-    public function getTemplateLimitation() : string;
+    public function getTemplateLimitation(): string;
 
     /**
      * @param string $template
@@ -191,10 +188,7 @@ interface OptionsInterface extends \ArrayAccess
      */
     public function setTemplateLimitation(string $template);
 
-    /**
-     * @return string
-     */
-    public function getTemplateSorting() : string;
+    public function getTemplateSorting(): string;
 
     /**
      * @param string $template
@@ -215,6 +209,5 @@ interface OptionsInterface extends \ArrayAccess
     /**
      * @return array
      */
-    public function toArray() : array;
-
+    public function toArray(): array;
 }

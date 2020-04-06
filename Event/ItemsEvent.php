@@ -9,52 +9,48 @@ class ItemsEvent extends Event
     /**
      * @var array|object
      */
-    protected $source;
+    private $source;
 
     /**
      * @var mixed
      */
-    protected $options;
+    private $options;
 
     /**
      * @var string
      */
-    protected $sort;
+    private $sort;
 
     /**
      * @var string
      */
-    protected $sortOrder;
+    private $sortOrder;
 
     /**
      * @var int
      */
-    protected $limit;
+    private $limit;
 
     /**
      * @var int
      */
-    protected $offset;
+    private $offset;
 
     /**
      * @var int
      */
-    protected $totalCount;
+    private $totalCount;
 
     /**
      * @var iterable|array
      */
-    protected $items;
+    private $items;
 
     /**
      * @param array|object $source
-     * @param mixed        $options
-     * @param string       $sort
-     * @param string       $sortOrder
-     * @param int          $limit
-     * @param int          $offset
+     * @param mixed $options
      */
-    public function __construct($source, $options, $sort = '', $sortOrder = '', $limit = 0, $offset = 0)
+    public function __construct($source, $options, string $sort = '', string $sortOrder = '', int $limit = 0, int $offset = 0)
     {
         $this->source    = $source;
         $this->options   = $options;
@@ -80,34 +76,22 @@ class ItemsEvent extends Event
         return $this->options;
     }
 
-    /**
-     * @return string
-     */
-    public function getSort()
+    public function getSort(): string
     {
         return $this->sort;
     }
 
-    /**
-     * @return string
-     */
-    public function getSortOrder()
+    public function getSortOrder(): string
     {
         return $this->sortOrder;
     }
 
-    /**
-     * @return int
-     */
-    public function getLimit()
+    public function getLimit(): int
     {
         return $this->limit;
     }
 
-    /**
-     * @return int
-     */
-    public function getOffset()
+    public function getOffset(): int
     {
         return $this->offset;
     }
@@ -122,30 +106,19 @@ class ItemsEvent extends Event
 
     /**
      * @param iterable|array $items
-     * @return $this
      */
-    public function setItems($items)
+    public function setItems($items): void
     {
         $this->items = $items;
-        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getTotalCount()
+    public function getTotalCount(): int
     {
         return $this->totalCount;
     }
 
-    /**
-     * @param int $totalCount
-     * @return $this
-     */
-    public function setTotalCount($totalCount)
+    public function setTotalCount(int $totalCount): void
     {
         $this->totalCount = $totalCount;
-        return $this;
     }
-
 }
